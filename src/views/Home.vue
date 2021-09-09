@@ -1,5 +1,7 @@
 <template>
-  <div class="home-page">hello</div>
+  <div class="home-page">
+    <base-icon icon="logo-zing" style="font-size: 64px" />
+  </div>
 </template>
 
 <script lang="ts">

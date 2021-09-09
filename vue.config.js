@@ -78,20 +78,8 @@ module.exports = {
       .loader('url-loader')
       .tap(options => Object.assign(options, { limit: 10240 }))
 
-    // Get the filename into the format we use for different builds.
-    let today = new Date()
-    config.output.filename('becrm-main_' + today.getTime() + '.js')
-    // Disable splitChunks plugin, all the code goes into one bundle.
-    config.optimization.splitChunks().clear()
-    // Disable the CSS extraction into a separate file.
-    config.module.rule('css').oneOf('vue').uses.delete('extract-css-loader')
-    // Take the CSS from the bundle and inject it in the DOM when
-    // the page loads...
-    config.module.rule('css').oneOf('vue').use('style-loader').before('css-loader').loader('style-loader').end()
-
     config.plugin('html').tap(args => {
-      // args[0].title = 'Bework | CRM'
-      args[0].title = 'LPB | Ứng dụng quản lý bảo hiểm'
+      args[0].title = 'Zing Mp3'
 
       return args
     })
