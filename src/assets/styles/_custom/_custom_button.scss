@@ -1,0 +1,145 @@
+.be-button-unset {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  line-height: inherit;
+  overflow: initial;
+  padding: 0;
+  text-align: initial;
+  vertical-align: initial;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background: none;
+    color: var(--be-button-hover-color);
+  }
+  &:active,
+  &:focus,
+  &:visited,
+  &:focus-within,
+  &:focus-visible {
+    outline: none;
+    border: none;
+    color: var(--be-button-hover-color);
+    background-color: transparent;
+  }
+}
+.be-button-text {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  line-height: inherit;
+  overflow: initial;
+  padding: 0;
+  text-align: initial;
+  vertical-align: initial;
+  outline: none;
+  cursor: auto;
+  .el-avatar {
+    margin-right: 8px;
+  }
+  &:hover {
+    background: none;
+    color: var(--be-button-hover-color);
+  }
+  &:active,
+  &:focus,
+  &:visited,
+  &:focus-within,
+  &:focus-visible {
+    outline: none;
+    border: transparent;
+    color: var(--be-button-hover-color);
+    background-color: transparent;
+  }
+}
+
+.el-button {
+  // "button khong bold": a T said :v
+  font-weight: 500 !important;
+  &:hover {
+    color: var(--be-button-hover-color);
+    border-color: var(--be-button-hover-color);
+    background-color: transparent;
+  }
+  &:active,
+  &:focus {
+    outline: none;
+    background-color: transparent;
+    // border-color: var(--be-button-main-border);
+  }
+}
+
+.be-button-color {
+  color: var(--be-button-hover-color);
+}
+
+.be-button-background-transparent {
+  background-color: transparent;
+  color: #fff;
+}
+
+.be-theme-button {
+  color: var(--be-theme-button-color);
+  // border-color: var(--be-button-main-border);
+  border: none;
+  background: linear-gradient(to right, var(--be-theme-button-gradient-start-color) 0%, var(--be-theme-button-gradient-end-color) 100%);
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--be-theme-button-color);
+    // border-color: var(--be-button-main-border);
+    background: linear-gradient(to right, var(--be-theme-button-gradient-start-color) 0%, var(--be-theme-button-gradient-end-color) 100%);
+  }
+}
+
+.be-button-danger {
+  background-color: var(--be-color-linear-weight);
+  color: var(--be-text-color-white);
+  &:hover {
+    background-color: var(--be-color-linear-weight);
+    color: var(--be-text-color-white);
+  }
+}
+
+.be-btn-danger {
+  padding: 8px 10px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  border: 0;
+  outline: none;
+  background-color: var(--be-color-linear-weight);
+  color: var(--be-text-color-white);
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--be-color-linear-weight);
+    color: var(--be-text-color-white);
+  }
+}
+
+a:focus {
+  outline: none !important;
+}
+a:-webkit-any-link:focus {
+  outline-offset: 0px;
+  outline: none !important;
+}
+.create-deal {
+  .custom-button {
+    margin-right: 20px;
+    .el-button {
+      background: #f07525;
+      color: #fff;
+    }
+  }
+}
+.be-btn-delete {
+  position: absolute;
+  left: 20px;
+}

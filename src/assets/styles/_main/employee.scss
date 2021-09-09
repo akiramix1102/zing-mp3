@@ -1,0 +1,40 @@
+.employee-unit {
+  .el-table__header {
+    margin-top: 16px;
+  }
+}
+.employee {
+  .actions {
+    .custom-button {
+      height: 36px;
+      padding: 6px 10px;
+      margin-left: 10px;
+      .icon {
+        font-size: 22px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+.filterInfo {
+  margin-top: 15px !important;
+  font-weight: 500;
+  font-size: 14px;
+  width: 266px !important;
+  .el-button--medium {
+    border-radius: 15px !important;
+  }
+  // .popper__arrow {
+  //   left: 200px !important;
+  // }
+  .el-select .el-input.is-focus .el-input__inner, .el-select .el-input__inner:focus{
+    border-color: #eee !important;
+  }
+  .el-button:hover{
+    border-color:#dbdbdb!important;
+  }
+  .el-select__input, .el-input__inner{
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

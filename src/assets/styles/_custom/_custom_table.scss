@@ -1,0 +1,831 @@
+// custom main table
+
+.el-table {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  .cell {
+    line-height: 18px;
+    word-break: break-word;
+    font-weight: 500;
+  }
+}
+
+.el-table::before {
+  // height: 0;
+  // border-bottom: none !important;
+}
+.base-custom-table {
+  .cell {
+    word-break: break-word;
+  }
+}
+.base-custom-table {
+  width: 100%;
+  .el-table__header-wrapper {
+    .el-table__header {
+      height: 40px !important;
+      thead {
+        th {
+          padding: 8px 0px;
+          background-color: var(--be-backgroud-row);
+          text-transform: uppercase;
+          color: var(--be-color);
+          font-weight: 500;
+          border-bottom-color: var(--be-border-color);
+          border-right-color: var(--be-border-color);
+          .cell {
+            line-height: 19px;
+          }
+        }
+        .el-table-column--selection {
+          .cell {
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+  .el-table__body-wrapper {
+    .el-table__row {
+      cursor: pointer;
+      &:hover td {
+        background-color: var(--be-backgroud-row) !important;
+      }
+    }
+    .el-table__append-wrapper {
+      .append-btn {
+        border-bottom: 1px solid #dbdbdb;
+        padding-left: 80px;
+      }
+    }
+  }
+
+  .cell {
+    word-break: break-word !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--be-color);
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  td {
+    border-bottom: 1px solid var(--be-border-color) !important;
+    background-color: var(--be-background-color) !important;
+    padding: 4px 0;
+    height: 56px;
+    font-size: 14px;
+  }
+
+  // set background cho row checked, khi nào tìm ra cách thì thay .id = .selected-row ở đây -_-
+
+  .el-table__body-wrapper {
+    // .empty-custom{
+    //   width: 100%;
+    // }
+    .el-table__row.selected-row {
+      td {
+        background-color: var(--be-backgroud-row-checked) !important;
+      }
+      &:hover {
+        td {
+          background-color: var(--be-background-color) !important;
+        }
+      }
+    }
+  }
+  .el-table-column--selection {
+    .cell {
+      padding-left: 0 !important;
+      text-overflow: unset;
+    }
+  }
+}
+.setting__right {
+  .base-pagination {
+    .info {
+      font-size: 14px;
+    }
+  }
+}
+//custom main pagination
+.base-pagination {
+  padding: 10px 0;
+  border-top: 1px solid #dbdbdb;
+  .info {
+    color: #8f8f8f;
+  }
+  .custom-pagination {
+    .el-input {
+      &__inner {
+        height: 35px;
+        font-size: 14px !important;
+        background-color: var(--be-background-color-second);
+        border-color: var(--be-border-color);
+
+        &:hover,
+        &:focus {
+          border-color: #c0c4cc !important;
+        }
+      }
+      .el-input__suffix {
+        color: var(--be-color) !important;
+        .el-select__caret {
+          color: var(--be-color) !important;
+        }
+      }
+    }
+    .btn-prev,
+    .btn-next {
+      height: 32px;
+      width: 32px;
+      border: 1px solid var(--be-border-color);
+      color: var(--be-color) !important;
+
+      &:hover {
+        border-color: var(--be-border-color-hover);
+      }
+      &:hover .el-icon {
+        color: var(--be-text-color-hover) !important;
+      }
+    }
+    .el-pager {
+      li {
+        border: 1px solid #dbdbdb;
+        height: 32px;
+        width: 40px;
+        // padding: 4px 0;
+        font-size: 14px;
+        font-weight: 500;
+
+        &:hover {
+          border: 1px solid var(--be-color-active) !important;
+          color: var(--be-color-active) !important;
+        }
+      }
+      li.active {
+        color: var(--be-color-active) !important;
+        border-color: var(--be-color-active) !important;
+        background-color: var(--be-background-color) !important;
+      }
+    }
+  }
+}
+
+// custom table contract
+// .base-table.table-contract {
+//   .el-table__body-wrapper {
+//     height: calc(100vh - 243px);
+//     overflow-y: auto;
+//   }
+// }
+
+//custom table import
+.import-page {
+  .base-custom-table {
+    .el-table__body-wrapper {
+      height: calc(100vh - 245px);
+      overflow-y: auto;
+    }
+  }
+}
+//custom table audit
+.audit-page {
+  .base-custom-table {
+    .el-table__body-wrapper {
+      height: calc(100vh - 243px);
+      overflow-y: auto;
+      .el-table__row {
+        &:hover {
+          .el-icon-more {
+            display: block;
+          }
+        }
+        .reference:focus {
+          .el-icon-more {
+            display: block;
+            outline: none;
+            color: var(--be-color-active);
+          }
+        }
+      }
+    }
+  }
+}
+.page-content {
+  .el-table__body-wrapper {
+    max-height: calc(100vh - 250px) !important;
+    overflow-y: auto;
+  }
+}
+// .deal-page
+
+// custom table with summary
+
+.table-with-summary {
+  flex-direction: column;
+  display: flex;
+  .cell {
+    line-height: 1.4;
+    font-weight: 400;
+  }
+  .el-table__header-wrapper {
+    order: 1;
+    min-height: 44px;
+    .el-table__header thead th {
+      padding: 8px 0;
+    }
+    .cell {
+      font-size: 14px;
+    }
+  }
+  .el-table__body-wrapper {
+    order: 2;
+    flex: 1;
+  }
+  .el-table__footer-wrapper {
+    order: -1;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    min-height: 40px;
+    .el-table__footer {
+      background-color: var(--be-table-summary-background) !important;
+      tr {
+        background-color: transparent !important;
+      }
+      td {
+        border-right: none;
+        background-color: transparent !important;
+        // border: 1px solid var(--be-table-summary-background) !important;
+        height: auto;
+      }
+      .cell {
+        color: var(--be-table-summary-color);
+        font-weight: 600 !important;
+        line-height: 1.4;
+        text-transform: uppercase;
+      }
+    }
+    th.gutter {
+      background-color: transparent;
+    }
+  }
+}
+.salary-approve-table-page {
+  .base-custom-table {
+    .el-table__body-wrapper {
+      height: calc(100vh - 237px);
+      overflow-y: auto;
+    }
+  }
+}
+.table-hidden-scroll {
+  .el-table__body-wrapper {
+    overflow: visible;
+  }
+}
+
+.table-with-summary-2 {
+  .el-table__header-wrapper {
+    .el-table__header thead th {
+      padding: 3px 0;
+      // .cell {
+      //   font-size: 12px;
+      // }
+    }
+  }
+  .el-table__header-wrapper {
+    // min-height: 60px;
+  }
+}
+
+.table-hidden-expand {
+  .el-table__expand-column {
+    display: none;
+  }
+}
+
+.table-text-body-bold {
+  .el-table__body-wrapper {
+    .cell {
+      // font-weight: 600;
+    }
+  }
+}
+
+.table-text-body-normal {
+  .el-table__body-wrapper {
+    .cell {
+      font-weight: 400;
+    }
+  }
+}
+
+.table-expanded {
+  .el-table__body-wrapper {
+    td.el-table__expanded-cell {
+      padding: 0;
+    }
+  }
+}
+
+.table-child-table {
+  .el-table__row:last-child {
+    td {
+      border-bottom: none !important;
+    }
+  }
+}
+
+.table-width-background {
+  .el-table__body-wrapper {
+    .el-table__row {
+      td {
+        // background-color: var(--be-table-background) !important;
+      }
+    }
+  }
+}
+
+.table-no-background {
+  .el-table__body-wrapper {
+    .el-table__row {
+      td {
+        // background-color: transparent !important;
+      }
+    }
+  }
+}
+
+//custom table salary
+.salary-table {
+  margin-top: 20px;
+  .base-table {
+    .el-table {
+      .el-table__footer-wrapper {
+        td {
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+.salary-table--year {
+  .el-table {
+    .el-table__body-wrapper {
+      max-height: calc(100vh - 332px);
+    }
+  }
+}
+.salary-table--kd,
+.salary-table--com,
+.salary-table--dvkd {
+  .el-table {
+    .el-table__body-wrapper {
+      max-height: calc(100vh - 291px);
+    }
+  }
+}
+.contract-page{
+  .el-table {
+    .el-table__body-wrapper {
+      max-height: calc(100vh - 243px);
+      .el-table__expanded-cell {
+        .el-table__body-wrapper {
+          height: auto;
+          max-height: unset;
+        }
+      }
+    }
+  }
+  .el-table__expanded-cell{
+    padding: 0px;
+  }
+}
+
+
+.setting__right,
+.report-page,
+.deal-page {
+  .custom-table-height {
+    .el-table {
+      .el-table__body-wrapper {
+        max-height: calc(100vh - 290px);
+        .el-table__expanded-cell {
+          .el-table__body-wrapper {
+            height: auto;
+            max-height: unset;
+          }
+        }
+      }
+    }
+  }
+  .custom-table-height-9e {
+    .el-table {
+      .el-table__body-wrapper {
+        max-height: calc(100vh - 310px);
+        .el-table__expanded-cell {
+          .el-table__body-wrapper {
+            height: auto;
+            max-height: unset;
+          }
+        }
+      }
+    }
+  }
+  .table-pl9i {
+    .el-table__expanded-cell {
+      .el-table__body-wrapper {
+        overflow: hidden;
+      }
+    }
+  }
+}
+#popup-detail-kpi-month {
+  .is-scrolling-left {
+    height: calc(100vh - 330px);
+  }
+  .is-scrolling-middle {
+    height: calc(100vh - 330px);
+  }
+  .is-scrolling-right {
+    height: calc(100vh - 330px);
+  }
+}
+#employee {
+  .is-scrolling-none {
+    height: calc(100vh - 265px);
+    overflow-y: auto;
+  }
+}
+.table-payment {
+  .is-scrolling-none {
+    height: calc(100vh - 37vh);
+    overflow-y: auto;
+  }
+}
+
+.infoEmployeeGroup .popup-content {
+  .el-table__body-wrapper.is-scrolling-none {
+    height: calc(100vh - 61vh);
+    overflow-y: auto;
+  }
+}
+.poppupAdddMember .popup-content {
+  .el-table__body-wrapper.is-scrolling-none {
+    height: calc(100vh - 420px);
+    overflow-y: auto;
+  }
+}
+
+// .slack__setting-left {
+//   ul.el-menu-vertical.el-menu {
+//     height: calc(100vh - 100px);
+//   }
+// }
+.appoint-customer {
+  .popup-content {
+    height: calc(100vh - 225px);
+    overflow-y: auto;
+  }
+}
+// .createUnit {
+//   .popup-content {
+//     height: calc(100vh - 235px);
+//     overflow-y: auto;
+//   }
+// }
+
+.popupEditUnit {
+  .body-content {
+    height: calc(100vh - 36vh);
+    overflow-y: auto;
+    padding-top: 10px;
+  }
+}
+
+.style_audit {
+  .el-table--scrollable-x .el-table__body-wrapper {
+    height: calc(100vh - 350px);
+    overflow-y: auto;
+  }
+}
+.style_cancer_pop {
+  .el-table--scrollable-x .el-table__body-wrapper {
+    height: calc(100vh - 350px);
+    overflow-y: auto;
+  }
+}
+.popup-chucnang {
+  .el-table--scrollable-x .el-table__body-wrapper {
+    height: calc(100vh - 350px);
+    overflow-y: auto;
+  }
+}
+.kpi-month {
+  .el-table__body-wrapper {
+    height: calc(100vh - 245px);
+    overflow-y: auto;
+  }
+}
+.kpi-year {
+  .el-table__body-wrapper {
+    height: calc(100vh - 285px);
+    overflow-y: auto;
+  }
+}
+
+//custom table popup action audit
+.table-action-popup {
+  .el-table {
+    .el-table__body-wrapper {
+      min-height: 150px;
+      overflow-y: auto;
+      max-height: calc(95vh - 324px);
+    }
+  }
+}
+
+.custom-kpi-dvkd {
+  .el-table {
+    .el-table__header-wrapper {
+      thead tr:first-child th:nth-child(5) {
+        border-right: none;
+      }
+      thead tr:last-child th:nth-child(6) {
+        border-right: none;
+      }
+    }
+  }
+  .custom-report-input {
+    .el-input__inner {
+      color: #000;
+    }
+  }
+}
+.custom-kpi-cbnv {
+  .custom-report-input {
+    .el-input__inner {
+      color: #000;
+    }
+  }
+}
+
+.auditing-page {
+  .auditing-table {
+    .base-custom-table {
+      .el-table__footer-wrapper {
+        .el-table__footer {
+          tbody {
+            tr td:nth-child(n + 8) {
+              background: #ea3434 !important;
+              border-color: #ea3434 !important;
+            }
+            tr td:first-child {
+              background: #fff !important;
+              border: none !important;
+            }
+            td {
+              overflow: inherit !important;
+              height: 40px;
+              border: none !important;
+              .cell {
+                overflow: inherit !important;
+              }
+            }
+            tr td:nth-child(5) {
+              position: relative;
+              left: -62px;
+              // z-index: 999;
+            }
+            tr td:nth-child(11) {
+              // position: relative;
+              // right: 61px;
+            }
+          }
+        }
+      }
+      .el-table__body-wrapper {
+        max-height: calc(100vh - 288px);
+        .el-table__row {
+          .diff {
+            background-color: var(--be-table-background-diff) !important;
+          }
+          &:hover .diff {
+            background-color: var(--be-backgroud-row) !important;
+          }
+          .el-icon-more {
+            width: 30px;
+            height: 30px;
+            position: relative;
+            line-height: 30px;
+            left: 11px;
+          }
+        }
+        tr td:nth-child(7),
+        tr td:nth-child(13) {
+          .cell {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            .el-checkbox__input {
+              padding: 10px;
+            }
+          }
+        }
+
+        // tr {
+        //   td {
+        //     border-left: 1px solid var(--be-border-color) !important;
+        //   }
+        // }
+        // tr td:last-child {
+        //   border-right: 5px solid var(--be-border-color) !important;
+        // }
+      }
+      .el-table__header-wrapper {
+        thead tr:first-child th:nth-child(14) {
+          border-right: none;
+        }
+        thead tr:last-child th:nth-child(14) {
+          border-right: none;
+        }
+        th {
+          height: 44px;
+        }
+      }
+    }
+  }
+}
+
+.auditing-page {
+  .table-hd {
+    .base-custom-table {
+      .el-table__footer-wrapper {
+        .el-table__footer {
+          tbody {
+            tr td:nth-child(5) {
+              position: relative;
+              left: -126px;
+              // z-index: 999;
+              .cell {
+                width: 200px;
+              }
+            }
+            tr td:nth-child(11) {
+              padding: 0;
+              height: 40px;
+              position: relative;
+              left: -120px;
+              // z-index: 999;
+              .cell {
+                height: 100%;
+                width: 200px;
+                line-height: 40px;
+                background: #ea3434 !important;
+              }
+            }
+            th.gutter {
+              background: #ea3434 !important;
+              border-bottom: none;
+            }
+          }
+        }
+      }
+      .el-table__header-wrapper {
+        tr th:nth-child(13) {
+          border-right: none;
+        }
+      }
+    }
+  }
+}
+
+.create-cost {
+  .table-with-summary {
+    .el-table__footer-wrapper {
+      order: 3;
+      border-top-right-radius: 0px;
+      border-top-left-radius: 0px;
+    }
+    .el-table__header-wrapper {
+      min-height: 38px;
+    }
+  }
+  td {
+    height: 68px;
+  }
+  .cell {
+    .el-form-item__error {
+      width: 100% !important;
+      margin-top: 2px !important;
+      margin-right: 2px;
+    }
+  }
+  .el-form-item__content {
+    min-height: 57px;
+  }
+  .svg-icon {
+    margin-bottom: 10px;
+  }
+}
+
+// table cơ hội bán hàng
+.wrap-sale {
+  .table-oppotunity-sale {
+    .header {
+      .custom-input {
+        .el-input__inner {
+          width: 100%;
+          max-height: 31px;
+          border: 0;
+          background-color: #f3f3f3;
+          padding: 6px 8px 6px 28px;
+          border-radius: 16px;
+          outline: none;
+          font-size: 14px;
+          line-height: 19.07px;
+        }
+      }
+    }
+  }
+}
+
+.table-dm-contact {
+  .base-custom-table {
+    .el-table__row {
+      .wrap-icon {
+        display: none;
+      }
+      &:hover {
+        .wrap-icon {
+          display: block;
+        }
+      }
+    }
+    .el-table__body-wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+      max-height: calc(100vh - 350px);
+      overflow-y: auto;
+      .el-table__append-wrapper {
+        width: 100%;
+        line-height: 56px;
+        .append-btn {
+          border-bottom: 1px solid #dbdbdb;
+          padding-left: 80px !important;
+        }
+      }
+      .el-table__empty-block {
+        .empty-block {
+          padding-top: 35px;
+        }
+      }
+    }
+  }
+}
+.layout__setting-category {
+  height: 100%;
+  .slack__setting-left {
+    overflow: auto;
+  }
+}
+
+.wrap-offer {
+  &__table {
+    .offer-table {
+      .el-table__body-wrapper {
+        height: calc(100vh - 245px);
+        overflow-y: auto;
+
+        .column-action {
+          .cell {
+            visibility: hidden;
+          }
+        }
+        .el-table__row:hover {
+          .column-action {
+            .cell {
+              visibility: inherit;
+            }
+          }
+        }
+      }
+      // .empty-block {
+      //   padding-top: 20px;
+      // }
+    }
+  }
+}
+.insurance-companies {
+  .table-insurance {
+    .el-table__body-wrapper {
+      height: calc(100vh - 292px);
+      overflow-y: auto;
+    }
+  }
+}

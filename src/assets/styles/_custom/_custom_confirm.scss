@@ -1,0 +1,60 @@
+.el-message-box__wrapper {
+  .el-message-box {
+    height: auto;
+    max-height: 75vh;
+    padding: 0;
+    width: fit-content;
+    .el-message-box__header {
+      background: #fafafa;
+      border-radius: 4px 4px 0px 0px;
+      padding: 17px 20px;
+
+      .el-message-box__title,
+      .el-message-box__close,
+      .el-icon-close {
+        color: #363636;
+        font-weight: 600;
+      }
+    }
+    .el-message-box__content {
+      padding: 20px 16px;
+      border-bottom: 1px solid #dbdbdb;
+      border-top: 1px solid #dbdbdb;
+    }
+    .el-message-box__btns {
+      background: #fafafa;
+      border-radius: 0px 0px 4px 4px;
+      padding: 12px 20px;
+      button {
+        background: none;
+        border: none;
+        padding: 8px 10px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        height: unset;
+        &:first-child {
+          color: #8f8f8f;
+        }
+        &:last-child {
+          color: #ffffff;
+          border-radius: 4px !important;
+          background: #f07525;
+        }
+      }
+    }
+  }
+
+  .confirm-delete {
+    max-width: 420px;
+    .el-message-box__btns {
+      width: auto;
+    }
+  }
+}
+
+.base-confirm {
+  .el-message-box__btns {
+    width: auto;
+  }
+}

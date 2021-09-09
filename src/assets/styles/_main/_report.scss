@@ -1,0 +1,43 @@
+.report-page, .deal-page {
+  .report-filter {
+    .custom-input {
+      width: 156px;
+      .el-input__inner {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        background-color: var(--be-input-background);
+        border: none;
+        outline: none;
+        height: 31px;
+      }
+    }
+    
+  }
+  
+  .base-custom-table td {
+    padding: 10px 0
+  }
+
+
+  .custom-table {
+    // .el-table__body-wrapper {
+    //   max-height: calc(100vh - 290px);
+    //   overflow-y: scroll;
+    // }
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .actions {
+    .custom-button {
+      height: 36px;
+      padding: 6px 10px;
+      .icon {
+        font-size: 22px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+:root,
+[data-theme="theme-light"] {
+  --be-background-color: #fff;
+  --be-color: #2b2b2b;
+  --be-border-color: #dbdbdb;
+
+  // link
+  --be-link-active-color: #f07525;
+  --be-link-active-boder-color: #f07525;
+  --be-link-active-hover-color: #f07525;
+
+  //button
+  --be-button-main-background: #cccccc;
+  --be-button-main-border: #cccccc;
+  --be-button-main-font: #737678;
+  --be-button-hover-background: #cccccc;
+  --be-button-hover-border: #cccccc;
+  --be-button-hover-color: #f07525;
+  --be-button-hover-font: #737678;
+
+  //border
+  --be-border-color-hover: #fb9a3a;
+
+  //background
+  --be-background-color-second: #fafafa;
+  --be-background-color-third: #f8f8f8;
+  --be-background-color-3: #f3f3f3;
+
+  //text
+  --be-color-dark: #000;
+  --be-color-active: #f07525;
+  --be-color-linear: #fb9a3a;
+  --be-color-linear-weight: #f07525;
+  --be-color-hyperlink: #4371b8;
+  --be-placeholder-color: #999;
+  --be-text-color-white: #fff;
+  --be-color-small-text: #8f8f8f;
+
+  //scroll
+  --be-scroll-background-thum: #747474;
+  --be-scroll-background-track: #747474;
+
+  //text hover
+  --be-text-color-hover: #fb9a3a;
+
+  //select option
+  --be-table-select-color: #39a25c;
+  --be-table-select-border-color: #c1c1c1;
+  --be-table-select-color-light: #61c500;
+
+  //status
+  --be-color-effective: #0f9d50;
+  --be-color-pending: #f79b07;
+  --be-status-color-effective: #a1e8bd;
+  --be-status-color-pending: #ffe0ae;
+  --be-status-color-lapse: #db5454;
+  --be-status-border-lapse: #efa6a6;
+
+  //status bacground
+  --be-status-background-effective: #e7fff2;
+  --be-status-background-pending: #fffce4;
+  --be-status-background-lapse: #fff4f2;
+
+  //btn
+  --be-btn-unset: #888888;
+  --be-btn-background: #ebebeb;
+
+  // status border color
+  --be-status-processing: #dbdbdb;
+  --be-status-error: #efa6a6;
+  --be-status-processed: #a1e8bd;
+
+  // status bg color
+  --be-status-bg-processing: #f3f3f3;
+  --be-status-bg-error: #fffce4;
+  --be-status-bg-error-opa: #fffce45e;
+  --be-status-bg-processed: #e7fff2;
+
+  // status text-color
+  --be-status-text-processing: #8f8f8f;
+  --be-statusc-text-error: #db5454;
+  --be-statusc-text-processed: #0f9d50;
+
+  // checkbox
+  --be-checkbox-bg: #c4c4c4;
+
+  //filter contract
+  --be-filter-contract: #2769b1;
+
+  //background table
+  --be-backgroud-row-checked: #f3f3f3;
+  --be-backgroud-row: #f3f3f3;
+
+  // input
+  --be-input-background: #f3f3f3;
+
+  // table
+  --be-table-summary-color: #ffffff;
+  --be-table-summary-background: #2769b1;
+  --be-table-background: #edf7f8;
+  --be-table-background-diff: #fff4f2;
+
+  // form
+  --form-label-color: #8f8f8f;
+
+  //color-action
+  --be-background-action-color: #f5f7fa;
+  --be-text-action-color: #363636;
+
+  //news feed
+  --be-color-description: #8f8f8f;
+  --be-color-user-name: #365899;
+  --be-color-aciton-comment: rgb(25, 98, 239);
+  --be-color-score: #2684ff;
+  --be-color-file: #2769b1;
+  // --be-a-text-color:#2B2B2B;
+  // --be-color-cell:#363636
+}

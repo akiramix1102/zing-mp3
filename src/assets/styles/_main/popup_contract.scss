@@ -1,0 +1,211 @@
+// popup detail contract
+
+.popup-contract,
+.history-detail {
+  &.history-detail:not(.popup-contract) {
+    padding: 20px;
+    background-color: var(--be-status-bg-processing) !important;
+    overflow-y: auto;
+    height: 70vh;
+  }
+  &.staff-code {
+    .el-dialog .el-dialog__body {
+      background: #fff;
+      .popup-content {
+        // padding: 28px 20px 33px 20px;
+        h4 {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 22px;
+          color: var(--be-color);
+          margin-bottom: 20px;
+        }
+        .req-staffCode {
+          border-bottom: 1px solid #dbdbdb;
+          padding-bottom: 28px;
+          h3 {
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 20px;
+            color: var(--be-color);
+            margin-top: 0;
+          }
+        }
+      }
+      .contract-detail {
+        background: var(--be-status-bg-processing);
+        border-radius: 8px;
+        padding: 20px;
+      }
+    }
+  }
+  .el-table__row {
+    height: 68px;
+  }
+  .popup-content {
+    padding: 20px;
+    max-height: 75vh !important;
+  }
+  .el-dialog .el-dialog__body {
+    // background-color: var(--be-status-bg-processing);
+    background: var(--be-status-bg-processing);
+  }
+  // .el-dialog__body {
+  //   padding: 20px;
+  // }
+  .el-dialog__header {
+    background-color: var(--be-background-color-second);
+  }
+  .content1 {
+    align-items: center;
+    margin-bottom: 12px;
+    background-color: var(--be-background-color);
+    border-radius: 8px;
+    .general1 {
+      padding: 20px;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2769b1;
+    }
+    .row {
+      margin-top: 12px;
+    }
+    .title2 {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--be-color-small-text);
+    }
+    .info {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--be-color);
+    }
+  }
+}
+.popup-permission {
+  .el-tag.el-tag--info {
+    color: var(--be-background-color);
+    background-color: #3578e5;
+    font-weight: 600;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    padding-right: 22px;
+  }
+  .el-tag.el-tag--info .el-tag__close:hover {
+    background-color: var(--be-filter-contract);
+  }
+  .el-tag.el-tag--info .el-tag__close {
+    color: var(--be-background-color);
+    background-color: #3578e5;
+    position: absolute;
+    right: 1px;
+    top: 9px;
+  }
+}
+.fillterContract {
+  .el-form-item {
+    margin-bottom: 5px;
+  }
+  .el-form--label-top .el-form-item__label {
+    padding: unset;
+  }
+  .el-form-item__content {
+    margin-top: -5px;
+  }
+  .el-tag.el-tag--info {
+    color: var(--be-background-color);
+    background-color: #3578e5;
+    border-color: none;
+    font-weight: 600;
+    height: 30px;
+    line-height: 30px;
+    max-width: 300px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    padding-right: 22px;
+  }
+  .be-btn-danger {
+    padding: 9px 15px;
+  }
+  .el-tag.el-tag--info .el-tag__close:hover {
+    background-color: var(--be-filter-contract);
+  }
+  .el-tag.el-tag--info .el-tag__close {
+    color: var(--be-background-color);
+    background-color: #3578e5;
+    position: absolute;
+    right: 0px;
+    top: 9px;
+  }
+  .el-form-item__label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--be-color-small-text);
+  }
+  .popup-content {
+    max-height: 70vh !important;
+  }
+  .el-input__icon {
+    color: #8f8f8f;
+  }
+  .el-select .el-input .el-select__caret {
+    color: #8f8f8f;
+  }
+}
+.fillter-salary-approve {
+  .el-form--label-top .el-form-item__label {
+    padding: unset;
+  }
+  .el-tag.el-tag--info {
+    color: var(--be-background-color);
+    background-color: var(--be-filter-contract);
+    border-color: none;
+    font-weight: 600;
+    height: 30px;
+    line-height: 30px;
+    max-width: 300px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    padding-right: 22px;
+  }
+  .be-btn-danger {
+    padding: 9px 15px;
+  }
+  .el-tag.el-tag--info .el-tag__close:hover {
+    background-color: var(--be-filter-contract);
+  }
+  .el-tag.el-tag--info .el-tag__close {
+    color: var(--be-background-color);
+    background-color: var(--be-filter-contract);
+    position: absolute;
+    right: 0px;
+    top: 9px;
+  }
+  .el-form-item__label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--be-color-small-text);
+  }
+  .popup-content {
+    max-height: 70vh !important;
+  }
+}
+//create-customer
+.popup-customer {
+  .popup-content {
+    max-height: 70vh !important;
+  }
+}
