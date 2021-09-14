@@ -1,5 +1,5 @@
 export interface IQuery {
-  page?: number
+  page: number
   limit?: number
   search?: string
   [x: string]: any

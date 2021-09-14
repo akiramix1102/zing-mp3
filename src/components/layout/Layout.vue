@@ -9,7 +9,7 @@
           <z-header />
         </div>
       </el-header>
-      <el-main>
+      <el-main class="main-center">
         <router-view />
       </el-main>
     </el-container>
@@ -44,6 +44,12 @@
     }
     .main-content {
       padding-top: 15px;
+      .main-header {
+        padding: 0 40px;
+      }
+      .main-center {
+        padding: 20px 40px;
+      }
     }
   }
 </style>
