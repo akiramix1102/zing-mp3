@@ -1,5 +1,14 @@
 :root,
 [data-theme="theme-light"] {
+  //color
+  --purple-primary: #7200a1;
+
+  //background
   --background-color: #170f23;
   --background-sidebar-color: hsl(0deg 0% 100% / 5%);
+  --alpha-bg: hsl(0deg 0% 100% / 10%);
+
+  //text-color
+  --text-color-white: #fff;
+  --text-color-gray: #dadada;
 }

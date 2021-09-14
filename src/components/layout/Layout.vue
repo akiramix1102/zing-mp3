@@ -5,7 +5,9 @@
     </el-aside>
     <el-container class="main-content">
       <el-header class="be-flex main-header" style="height: 70px">
-        <div class="display-block be-flex-item">top bar</div>
+        <div class="be-flex-item">
+          <z-header />
+        </div>
       </el-header>
       <el-main>
         <router-view />
@@ -17,8 +19,9 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import SideBarLeft from '../sidebar/SideBarLeft.vue'
+  import ZHeader from '../header/Header.vue'
   @Component({
-    components: { SideBarLeft }
+    components: { SideBarLeft, ZHeader }
   })
   export default class Layout extends Vue {
     isLoading = true
@@ -38,6 +41,9 @@
     height: 100vh;
     .sidebar-left {
       background-color: var(--background-sidebar-color);
+    }
+    .main-content {
+      padding-top: 15px;
     }
   }
 </style>

@@ -19,6 +19,7 @@
       width: 346px;
       background: var(--alpha-bg);
       border-radius: 30px;
+      color: red;
     }
   }
 </style>

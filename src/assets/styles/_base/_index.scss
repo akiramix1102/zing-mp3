@@ -1,7 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
-// @import './font';
-
-$font-stack: "Open Sans", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+$font-stack: "Inter", sans-serif;
 button,
 textarea {
   font-family: $font-stack !important;
@@ -14,10 +12,8 @@ html {
 body {
   margin: 0;
   color: var(--be-color);
-  background-color: var(--be-background-color);
   @include font-size(14);
   font-family: $font-stack !important;
-  min-width: 1280px;
   font-weight: 500;
 }
 
@@ -191,6 +187,9 @@ div {
 .pl-1 {
   padding-left: 10px;
 }
+.pl-0 {
+  padding-left: 0;
+}
 
 .is-none-border {
   border: none !important;
@@ -234,8 +233,11 @@ input[type="number"] {
 .is-dashed {
   border-style: dashed;
 }
-.mb-0 {
-  margin-bottom: 0;
+.mt-1 {
+  margin-top: 10px;
+}
+.mt-2 {
+  margin-top: 20px;
 }
 .ml-0 {
   margin-left: 0 !important;
@@ -246,8 +248,14 @@ input[type="number"] {
 .ml-2 {
   margin-left: 20px !important;
 }
+.mb-0 {
+  margin-bottom: 0;
+}
 .mb-1 {
   margin-bottom: 10px;
+}
+.mb-2 {
+  margin-bottom: 20px;
 }
 .mr-1 {
   margin-right: 10px;
@@ -263,4 +271,15 @@ input[type="number"] {
 }
 .uppercase {
   text-transform: uppercase;
+}
+.text-white {
+  color: var(--text-color-white);
+}
+.text-gray {
+  color: var(--text-color-gray);
+}
+
+.img-fluid {
+  width: 100%;
+  object-fit: cover;
 }
