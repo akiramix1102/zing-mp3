@@ -294,3 +294,52 @@ input[type="number"] {
     font-size: 20px;
   }
 }
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #444045 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #444045;
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+
+.is-60 {
+  width: 60px;
+  height: 60px;
+}
+
+.number {
+  font-size: 32px;
+  -webkit-text-stroke: 1px #fff;
+  opacity: 1;
+  color: rgba(74, 144, 226, 0);
+  font-weight: 900;
+}
+.top-1 {
+  -webkit-text-stroke: 1px var(--top-1);
+}
+.top-2 {
+  -webkit-text-stroke: 1px var(--top-2);
+}
+.top-3 {
+  -webkit-text-stroke: 1px var(--top-3);
+}
+.artists-small {
+  color: var(--text-subtitle);
+  font-size: 13px;
+  line-height: 1.3;
+  margin-top: 10px;
+}

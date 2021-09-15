@@ -9,6 +9,8 @@ import './assets/styles/index.scss'
 // import module
 import listModules from '@/modules'
 
+//format
+import * as format from '@/configs'
 
 //plugins
 import './plugins/element-ui'
@@ -42,7 +44,10 @@ forEach(listModules, module => {
   // })
 })
 
-
+//register filter
+Object.keys(format).forEach(key => {
+  Vue.filter(key, (format as any)[key])
+})
 
 new Vue({
   router,

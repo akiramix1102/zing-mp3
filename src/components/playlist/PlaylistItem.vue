@@ -1,13 +1,13 @@
 <template>
   <div class="playlist-item cursor" :class="isCarouselChild ? null : 'playlist-item--flex'">
     <div class="thumbnail">
-      <img :src="item.thumbnailM" :alt="item.title" class="img-fluid" />
-      <div class="opacity"></div>
-      <div class="overlay">
+      <img :src="item.thumbnailM || item.thumbnailHasText" :alt="item.title" class="img-fluid" />
+      <div v-if="isShowDes" class="opacity"></div>
+      <div v-if="isShowDes" class="overlay">
         <base-icon icon="play" style="font-size: 40px; color: #fff" />
       </div>
     </div>
-    <div class="description">
+    <div v-if="isShowDes" class="description">
       <span>{{ item.title }}</span>
     </div>
     <div v-if="!isCarouselChild" class="artists-small">
@@ -23,6 +23,7 @@
   export default class PlayListItem extends Vue {
     @Prop({ required: true, type: Object, default: {} }) item!: Record<string, any>
     @Prop({ required: false, type: Boolean, default: true }) isCarouselChild!: boolean
+    @Prop({ required: false, type: Boolean, default: true }) isShowDes!: boolean
   }
 </script>
 
@@ -81,12 +82,6 @@
       &:hover {
         color: var(--link-text-hover);
       }
-    }
-    .artists-small {
-      color: var(--text-subtitle);
-      font-size: 13px;
-      line-height: 1.3;
-      margin-top: 10px;
     }
   }
   .playlist-item--flex {

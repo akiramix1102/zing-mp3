@@ -4,7 +4,7 @@
       <span class="text-white">{{ title }}</span>
     </div>
     <VueSlickCarousel v-if="isCarousel" v-bind="settings">
-      <play-list-item v-for="(item, index) in listItem" :key="index" :item="item" />
+      <play-list-item v-for="(item, index) in listItem" :key="index" :item="item" :isShowDes="isShowDes" />
       <!-- <div v-for="item in 6" :key="item">{{ item }}</div> -->
     </VueSlickCarousel>
     <div v-else class="be-flex jc-space-between">
@@ -24,6 +24,7 @@
   export default class SuggestList extends Vue {
     @Prop({ required: true, type: String, default: '' }) title!: string
     @Prop({ required: false, type: Boolean, default: false }) isCarousel!: boolean
+    @Prop({ required: false, type: Boolean, default: true }) isShowDes!: boolean
     @Prop({
       required: true,
       type: Array,

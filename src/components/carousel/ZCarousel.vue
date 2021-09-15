@@ -11,7 +11,14 @@
 
   @Component
   export default class ZCarousel extends Vue {
-    @Prop({ required: true, type: Object, default: {} }) banner!: Record<string, any>
+    @Prop({
+      required: true,
+      type: Object,
+      default: () => {
+        return {}
+      }
+    })
+    banner!: Record<string, any>
   }
 </script>
 
