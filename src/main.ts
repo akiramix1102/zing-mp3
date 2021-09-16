@@ -6,6 +6,8 @@ import router from './router'
 import './icons'
 import './assets/styles/index.scss'
 
+import store from './store'
+
 // import module
 import listModules from '@/modules'
 
@@ -51,5 +53,6 @@ Object.keys(format).forEach(key => {
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

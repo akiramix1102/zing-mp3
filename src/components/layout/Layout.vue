@@ -14,24 +14,22 @@
       </el-main>
     </el-container>
     <el-aside class="sidebar-right" style="width: 320px"> sidebar right </el-aside>
+    <control-player />
   </el-container>
 </template>
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import SideBarLeft from '../sidebar/SideBarLeft.vue'
   import ZHeader from '../header/Header.vue'
+  import ControlPlayer from '../player/ControlPlayer.vue'
+  import { namespace } from 'vuex-class'
+  const beBase = namespace('beBase')
   @Component({
-    components: { SideBarLeft, ZHeader }
+    components: { SideBarLeft, ZHeader, ControlPlayer }
   })
   export default class Layout extends Vue {
+    @beBase.State('isPlay') isPlay!: boolean
     isLoading = true
-    isDashboard = false
-    async init(): Promise<void> {
-      console.log('a')
-    }
-    created(): void {
-      this.init()
-    }
   }
 </script>
 <style lang="scss" scoped>

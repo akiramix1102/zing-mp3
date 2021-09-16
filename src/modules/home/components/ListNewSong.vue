@@ -2,7 +2,7 @@
   <div class="wrap-list-new-song">
     <div class="be-flex jc-space-between wrap-list">
       <div class="be-flex release-item cursor" v-for="(item, index) in listItem" :key="index">
-        <div class="thumbnail">
+        <div class="thumbnail" @click="handlePlay(item)">
           <img :src="item.thumbnailM" :alt="item.title" class="img-fluid is-40" />
           <div class="opacity"></div>
           <div class="overlay">
@@ -24,10 +24,18 @@
 
 <script lang="ts">
   import { Component, Vue, Prop } from 'vue-property-decorator'
-
+  import { namespace } from 'vuex-class'
+  const beBase = namespace('beBase')
   @Component
   export default class ListNewSong extends Vue {
     @Prop({ required: true, type: Array, default: [] }) listItem!: Array<Record<string, any>>
+    @beBase.Action('setcurrentTrack') setcurrentTrack!: (song: Record<string, any>) => void
+    @beBase.Action('setPlaySong') setPlaySong!: (status: boolean) => void
+    handlePlay(item: Record<string, any>): void {
+      console.log(item)
+      this.setcurrentTrack(item)
+      this.setPlaySong(true)
+    }
   }
 </script>
 
