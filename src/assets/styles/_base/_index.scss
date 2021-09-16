@@ -315,10 +315,25 @@ input[type="number"] {
   border-radius: 10px;
   border: 2px solid transparent;
 }
-
+.is-40 {
+  width: 40px;
+  height: 40px;
+}
+.is-50 {
+  width: 50px;
+  height: 50px;
+}
 .is-60 {
   width: 60px;
   height: 60px;
+}
+.is-80 {
+  width: 80px;
+  height: 80px;
+}
+.is-120 {
+  width: 120px;
+  height: 120px;
 }
 
 .number {
@@ -339,7 +354,14 @@ input[type="number"] {
 }
 .artists-small {
   color: var(--text-subtitle);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.3;
   margin-top: 10px;
+}
+.is-round {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.is-circle-5 {
+  border-radius: 5px;
 }

@@ -28,6 +28,21 @@
     <div v-if="getTopMood && getTopMood.length" class="mb-3 suggest-list">
       <suggest-list :listItem="getTopMood" title="Tâm Trạng Và Hoạt Động" :isCarousel="true" :isShowDes="false" />
     </div>
+    <div v-if="getListNewRelease && getListNewRelease.length" class="mb-3 suggest-list">
+      <list-release :listItem="getListNewRelease" />
+    </div>
+    <div v-if="getListNewSong && getListNewSong.length" class="mb-3 suggest-list">
+      <list-new-song :listItem="getListNewSong" />
+    </div>
+    <div v-if="getListAlbum && getListAlbum.length" class="mb-3 suggest-list">
+      <suggest-list :listItem="getListAlbum" title="" :setting="settings" :showButtonSlide="false" :isCarousel="true" />
+    </div>
+    <div v-if="getListVideo && getListVideo.length" class="mb-3 suggest-list">
+      <suggest-list :listItem="getListVideo" title="MV Hot" type="mv" :setting="settingVideo" :isCarousel="true" />
+    </div>
+    <div v-if="getListMix && getListMix.length" class="mb-3 suggest-list">
+      <list-mix :listItem="getListMix" />
+    </div>
   </div>
 </template>
 
@@ -36,6 +51,9 @@
   import ZCarousel from '@/components/carousel/ZCarousel.vue'
   import SuggestList from '../components/SuggestList.vue'
   import ListChart from '../components/ListChart.vue'
+  import ListRelease from '../components/ListRelease.vue'
+  import ListNewSong from '../components/ListNewSong.vue'
+  import ListMix from '../components/ListMix.vue'
 
   import { IQuery } from '@/interface'
   import { filter } from 'lodash'
@@ -44,7 +62,7 @@
   import HomeRepository from '@/services/repositories/home'
   const apiHome: HomeRepository = getRepository('home')
 
-  @Component({ components: { ZCarousel, SuggestList, ListChart } })
+  @Component({ components: { ZCarousel, SuggestList, ListChart, ListRelease, ListNewSong, ListMix } })
   export default class Home extends Vue {
     data: Array<Record<string, any>> = []
     banner: Record<string, any> = {}
@@ -54,6 +72,28 @@
       page: 1
     }
     isEnd = false
+
+    settings: Record<string, any> = {
+      dots: false,
+      focusOnSelect: false,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      speed: 600,
+      slidesToShow: 5,
+      slidesToScroll: 3,
+      touchThreshold: 5
+    }
+    settingVideo: Record<string, any> = {
+      dots: false,
+      focusOnSelect: false,
+      infinite: false,
+      autoplay: false,
+      speed: 600,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      touchThreshold: 5
+    }
 
     created(): void {
       apiHome.getHome(this.query).then((res: any) => {
@@ -117,6 +157,26 @@
     get getTopMood(): Array<Record<string, any>> {
       const objList = filter(this.data, item => item.sectionId === 'hGenre')
       return objList.length ? objList[0].items : []
+    }
+    get getListNewRelease(): Array<Record<string, any>> {
+      const objList = filter(this.data, item => item.sectionId === 'hNewrelease')
+      return objList.length ? objList[0].items : []
+    }
+    get getListNewSong(): Array<Record<string, any>> {
+      const objList = filter(this.data, item => item.sectionId === 'hNewSong')
+      return objList.length ? objList[0].items : []
+    }
+    get getListAlbum(): Array<Record<string, any>> {
+      const objList = filter(this.data, item => item.sectionId === 'hAlbum')
+      return objList.length ? objList[0].items : []
+    }
+    get getListVideo(): Array<Record<string, any>> {
+      const objList = filter(this.data, item => item.sectionType === 'video')
+      return objList.length ? objList[0].items : []
+    }
+    get getListMix(): Array<Record<string, any>> {
+      const objList = filter(this.data, item => item.sectionId === 'hMix')
+      return objList.length ? objList[0].items.slice(0, 3) : []
     }
 
     async handleScroll(): Promise<void> {

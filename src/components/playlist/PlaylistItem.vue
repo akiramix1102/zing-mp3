@@ -7,8 +7,19 @@
         <base-icon icon="play" style="font-size: 40px; color: #fff" />
       </div>
     </div>
-    <div v-if="isShowDes" class="description">
+    <div v-if="isShowDes && type !== 'mv'" class="description">
       <span>{{ item.title }}</span>
+    </div>
+    <div v-if="isShowDes && type === 'mv'" class="description be-flex align-center des-mv">
+      <div class="thumb-small">
+        <img :src="item.artist.thumbnail" :alt="item.title" class="is-40 is-round" />
+      </div>
+      <div class="title">
+        <span>{{ item.title }}</span>
+        <span style="display: block" class="artists-small">
+          <span v-for="(artist, index) in item.artists" :key="artist.id"> {{ index >= item.artists.length - 1 ? artist.name : artist.name + ',' }}</span>
+        </span>
+      </div>
     </div>
     <div v-if="!isCarouselChild" class="artists-small">
       <span v-for="(artist, index) in item.artists" :key="artist.id"> {{ index >= item.artists.length - 1 ? artist.name : artist.name + ',' }}</span>
@@ -24,6 +35,7 @@
     @Prop({ required: true, type: Object, default: {} }) item!: Record<string, any>
     @Prop({ required: false, type: Boolean, default: true }) isCarouselChild!: boolean
     @Prop({ required: false, type: Boolean, default: true }) isShowDes!: boolean
+    @Prop({ required: false, type: String, default: '' }) type!: string
   }
 </script>
 
@@ -85,6 +97,14 @@
     }
   }
   .playlist-item--flex {
-    width: 228px;
+    width: calc(100% / 5 - 15px);
+  }
+  .des-mv {
+    .thumb-small {
+      margin-right: 10px;
+    }
+    .artists-small {
+      margin-top: 5px;
+    }
   }
 </style>
