@@ -1,7 +1,9 @@
 <template>
   <div class="be-flex align-center control-player">
     <div class="be-flex align-center control-player__description">
-      <img :src="currentTrack.thumbnail" :alt="currentTrack.title" class="is-60 is-round" />
+      <div class="thumbnail" :class="audioPlay ? 'is-audio-play' : null">
+        <img :src="currentTrack.thumbnail" :alt="currentTrack.title" class="is-60 is-round" />
+      </div>
       <div class="text-white title">
         <span>{{ currentTrack.title }}</span>
         <div class="artists-small">
@@ -18,8 +20,9 @@
           <div class="icon-item text-white cursor">
             <base-icon icon="previous-icon" class="icon" style="font-size: 16px; padding: 6px 8px" />
           </div>
-          <div class="icon-item text-white cursor">
-            <base-icon icon="play-icon" class="play-icon" style="font-size: 40px" />
+          <div class="icon-item text-white cursor" @click="onPlay">
+            <base-icon v-if="audioPlay" icon="pause-icon" class="play-icon" style="font-size: 40px" />
+            <base-icon v-else icon="play-icon" class="play-icon" style="font-size: 40px" />
           </div>
           <div class="icon-item text-white cursor">
             <base-icon icon="next-icon" class="icon" style="font-size: 16px; padding: 6px 8px" />
@@ -31,11 +34,13 @@
       </div>
       <div class="progress-bar">
         <span class="time time-curent">{{ timeCurent }}</span>
-        <div class="progress-line">
+        <!-- <div class="progress-line" @click="handleClickProgress($event)" ref="progress-line">
           <div class="line-main"></div>
           <div class="line-curent" :style="{ width: barWidth }"></div>
           <div class="line-cricle" :style="{ left: circleLeft }"></div>
-        </div>
+        </div> -->
+        <el-slider v-model="value1" class="progress-line" @change="handleChangeSlider"></el-slider>
+
         <span class="time time-total">{{ currentTrack.duration | formatTimeTotal }}</span>
       </div>
     </div>
@@ -60,16 +65,39 @@
     timeCurent = '00:00'
     barWidth = '0px'
     circleLeft = '0%'
-
+    audioPlay = false
+    elmSliderBar: any = null
+    elmSliderBarButton: any = null
+    value1 = 0
     created(): void {
       this.audio = new Audio()
       this.audio.ontimeupdate = () => {
         this.generateTime()
       }
     }
+    mounted(): void {
+      const slider_bar = document.querySelector('.el-slider__bar')
+      const slider_bar_button = document.querySelector('.el-slider__button-wrapper')
+      this.elmSliderBar = slider_bar
+      this.elmSliderBarButton = slider_bar_button
+      console.log(slider_bar)
+    }
 
     @Watch('currentTrack.encodeId', { immediate: true }) watchCurentTrack(new_: string): void {
       this.getStreaming(new_)
+    }
+
+    onPlay(): void {
+      this.audioPlay = !this.audioPlay
+      this.audioPlay ? this.audio.play() : this.audio.pause()
+    }
+
+    handleChangeSlider(value: number): void {
+      this.audioPlay = true
+      this.audio.pause()
+      let currentTime = (value / 100) * this.audio.duration
+      this.audio.currentTime = currentTime
+      this.audio.play()
     }
 
     async getStreaming(id: string): Promise<void> {
@@ -79,12 +107,17 @@
       } else {
         this.audio.src = result['128']
       }
+      this.circleLeft = '0'
+      this.barWidth = '0'
       this.audio.play()
+      this.audioPlay = true
     }
     generateTime(): void {
       let width = (100 / this.audio.duration) * this.audio.currentTime
       this.barWidth = width + '%'
-      this.circleLeft = width - 1 + '%'
+      this.elmSliderBar.style.width = this.barWidth
+      this.elmSliderBarButton.style.left = this.barWidth
+      // this.circleLeft = width - 1 + '%'
       let durmin: string | number = Math.floor(this.audio.duration / 60)
       let dursec: string | number = Math.floor(this.audio.duration - durmin * 60)
       let curmin: string | number = Math.floor(this.audio.currentTime / 60)
@@ -121,6 +154,22 @@
     border-top: 1px solid #373041;
     &__description {
       width: 30%;
+      .is-audio-play {
+        img {
+          animation-name: rotate;
+          animation-duration: 12s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+      }
+      @keyframes round {
+        from {
+          transform: rotate(-360deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
       .title {
         padding-left: 10px;
         .artists-small {
@@ -161,9 +210,12 @@
         .progress-line {
           position: relative;
           width: 100%;
-          height: 3px;
+          // height: 3px;
           margin: 0 10px;
           cursor: pointer;
+          .el-slider__runway {
+            display: none;
+          }
           &:hover {
             .line-main {
               height: 6px;

@@ -184,7 +184,7 @@
       if (elm.scrollTop >= elm.scrollHeight - elm.offsetHeight && !this.isEnd) {
         this.query.page += 1
         await apiHome.getHome(this.query).then(res => {
-          this.isEnd = !res.hasMore
+          // this.isEnd = !res.hasMore
           this.data = [...this.data, ...res.items]
         })
       }
