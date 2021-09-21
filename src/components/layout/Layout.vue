@@ -1,5 +1,5 @@
 <template>
-  <el-container class="main-layout">
+  <el-container class="main-layout" :class="isPlay ? 'show-player' : null">
     <el-aside class="sidebar-left" style="width: 240px">
       <side-bar-left />
     </el-aside>
@@ -13,19 +13,20 @@
         <router-view />
       </el-main>
     </el-container>
-    <el-aside class="sidebar-right" style="width: 320px"> sidebar right </el-aside>
-    <control-player />
+    <el-aside class="sidebar-right" style="width: 320px"> <side-bar-right /> </el-aside>
+    <control-player v-if="isPlay" />
   </el-container>
 </template>
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import SideBarLeft from '../sidebar/SideBarLeft.vue'
+  import SideBarRight from '../sidebar/SideBarRight.vue'
   import ZHeader from '../header/Header.vue'
   import ControlPlayer from '../player/ControlPlayer.vue'
   import { namespace } from 'vuex-class'
   const beBase = namespace('beBase')
   @Component({
-    components: { SideBarLeft, ZHeader, ControlPlayer }
+    components: { SideBarLeft, ZHeader, ControlPlayer, SideBarRight }
   })
   export default class Layout extends Vue {
     @beBase.State('isPlay') isPlay!: boolean
@@ -48,6 +49,22 @@
       .main-center {
         padding: 20px 40px;
       }
+    }
+    .sidebar-right {
+      padding-top: 15px;
+      border-left: 1px solid hsl(0deg 0% 100% / 10%);
+      overflow: hidden;
+    }
+  }
+  .show-player {
+    .sidebar-left {
+      height: calc(100vh - 90px);
+    }
+    .main-content {
+      height: calc(100vh - 90px);
+    }
+    .sidebar-right {
+      height: calc(100vh - 90px);
     }
   }
 </style>

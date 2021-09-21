@@ -4,27 +4,27 @@
       <span class="text-white">Mới Phát Hành</span>
     </div>
     <div class="be-flex jc-space-between wrap-list">
-        <div class="be-flex release-item cursor" v-for="(item, index) in getTopRelease" :key="index">
-          <div class="thumbnail">
-            <img :src="item.thumbnailM" :alt="item.title" class="img-fluid is-120" />
-            <div class="opacity"></div>
-            <div class="overlay">
-              <base-icon icon="play" style="font-size: 40px; color: #fff" />
-            </div>
-          </div>
-          <div class="content">
-            <div class="text-white title">
-              <span>{{ item.title }}</span>
-              <div class="artists-small">
-                <span v-for="(artist, index) in item.artists" :key="artist.id"> {{ index >= item.artists.length - 1 ? artist.name : artist.name + ',' }}</span>
-              </div>
-            </div>
-            <div class="be-flex align-center rank">
-              <span class="number" :class="'top-' + (index + 1)">#{{ index + 1 }}</span>
-              <div class="artists-small date-release">{{ (item.releasedAt + '000') | formatDateTime }}</div>
-            </div>
+      <div class="be-flex release-item" v-for="(item, index) in getTopRelease" :key="index">
+        <div class="thumbnail cursor" @click="handlePlay(item)">
+          <img :src="item.thumbnailM" :alt="item.title" class="img-fluid is-120" />
+          <div class="opacity"></div>
+          <div class="overlay">
+            <base-icon icon="play" style="font-size: 40px; color: #fff" />
           </div>
         </div>
+        <div class="content">
+          <div class="text-white title">
+            <span>{{ item.title }}</span>
+            <div class="artists-small">
+              <span v-for="(artist, index) in item.artists" :key="artist.id"> {{ index >= item.artists.length - 1 ? artist.name : artist.name + ',' }}</span>
+            </div>
+          </div>
+          <div class="be-flex align-center rank">
+            <span class="number" :class="'top-' + (index + 1)">#{{ index + 1 }}</span>
+            <div class="artists-small date-release">{{ (item.releasedAt + '000') | formatDateTime }}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -37,12 +37,24 @@
   import VueSlickCarousel from 'vue-slick-carousel'
   import 'vue-slick-carousel/dist/vue-slick-carousel.css'
   import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+  import { namespace } from 'vuex-class'
+  const beBase = namespace('beBase')
   @Component({ components: { VueSlickCarousel, PlayListItem } })
   export default class ListRelease extends Vue {
     @Prop({ required: true, type: Array, default: [] }) listItem!: Array<Record<string, any>>
 
+    @beBase.Action('setcurrentTrack') setcurrentTrack!: (song: Record<string, any>) => void
+    @beBase.Action('getRecomendSong') getRecomendSong!: (id: string) => void
+
     get getTopRelease(): Array<Record<string, any>> {
       return this.listItem.splice(0, 3)
+    }
+
+    activeTab = 1
+
+    handlePlay(item: Record<string, any>): void {
+      this.setcurrentTrack(item)
+      this.getRecomendSong(item.encodeId)
     }
   }
 </script>

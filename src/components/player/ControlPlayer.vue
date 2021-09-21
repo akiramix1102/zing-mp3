@@ -39,12 +39,20 @@
           <div class="line-curent" :style="{ width: barWidth }"></div>
           <div class="line-cricle" :style="{ left: circleLeft }"></div>
         </div> -->
-        <el-slider v-model="value1" class="progress-line" @change="handleChangeSlider"></el-slider>
+        <el-slider v-model="timePlay" :show-tooltip="false" class="progress-line" @change="handleChangeSlider"></el-slider>
 
         <span class="time time-total">{{ currentTrack.duration | formatTimeTotal }}</span>
       </div>
     </div>
-    <div class="control-player__volume"></div>
+    <div class="be-flex text-white align-center control-player__volume">
+      <div v-if="volume" @click="handleClickIconAudio(true)" class="icon-item">
+        <base-icon icon="volume" class="cursor icon" style="font-size: 16px; padding: 6px 8px" />
+      </div>
+      <div v-else @click="handleClickIconAudio(false)" class="icon-item">
+        <base-icon icon="mute" class="icon cursor" style="font-size: 18px; padding: 6px 8px" />
+      </div>
+      <el-slider v-model="volume" :max="1" :step="0.1" :show-tooltip="false" class="progress-line" style="width: 100px" @change="handleChangeVolume"></el-slider>
+    </div>
   </div>
 </template>
 
@@ -60,6 +68,7 @@
   @Component
   export default class ControlPlayer extends Vue {
     @beBase.State('currentTrack') currentTrack!: Record<string, any>
+    @beBase.Action('setPlaySong') setPlaySong!: (status: boolean) => void
 
     audio: Record<string, any> = {}
     timeCurent = '00:00'
@@ -68,9 +77,11 @@
     audioPlay = false
     elmSliderBar: any = null
     elmSliderBarButton: any = null
-    value1 = 0
+    timePlay = 0
+    volume = 0.5
     created(): void {
       this.audio = new Audio()
+      this.audio.volume = this.volume
       this.audio.ontimeupdate = () => {
         this.generateTime()
       }
@@ -92,6 +103,15 @@
       this.audioPlay ? this.audio.play() : this.audio.pause()
     }
 
+    handleClickIconAudio(status: boolean): void {
+      this.volume = status ? 0 : 0.5
+      this.audio.volume = status ? this.volume : 0.5
+    }
+
+    handleChangeVolume(value: number): void {
+      this.audio.volume = value
+    }
+
     handleChangeSlider(value: number): void {
       this.audioPlay = true
       this.audio.pause()
@@ -101,14 +121,16 @@
     }
 
     async getStreaming(id: string): Promise<void> {
+      this.circleLeft = '0'
+      this.barWidth = '0'
       const result = await apiPlayer.getLinkStreaming({ id })
       if (result['320'] !== 'VIP') {
         this.audio.src = result['320']
       } else {
         this.audio.src = result['128']
       }
-      this.circleLeft = '0'
-      this.barWidth = '0'
+      this.audio.volume = this.volume
+      // this.setPlaySong(true)
       this.audio.play()
       this.audioPlay = true
     }
@@ -182,21 +204,6 @@
       .level-item {
         .btn-actions {
           justify-content: center;
-          .icon-item {
-            margin: 0 10px;
-            &:hover {
-              .icon {
-                background: hsla(0, 0%, 100%, 0.1);
-              }
-              .play-icon {
-                color: var(--link-text-hover);
-              }
-            }
-            .icon {
-              padding: 3px 5px;
-              border-radius: 50%;
-            }
-          }
         }
       }
       .progress-bar {
@@ -263,6 +270,22 @@
     }
     &__volume {
       width: 30%;
+      justify-content: center;
+    }
+  }
+  .icon-item {
+    margin: 0 10px;
+    &:hover {
+      .icon {
+        background: hsla(0, 0%, 100%, 0.1);
+      }
+      .play-icon {
+        color: var(--link-text-hover);
+      }
+    }
+    .icon {
+      padding: 3px 5px;
+      border-radius: 50%;
     }
   }
 </style>

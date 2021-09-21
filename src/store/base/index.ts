@@ -6,12 +6,16 @@ export interface ISBase {
   // popup: string[]
   currentTrack: Record<string, any>
   isPlay: boolean
+  playList: Array<Record<string, any>>
+  recomendList: Array<Record<string, any>>
 }
 
 const state: ISBase = {
   // popup: [],
   currentTrack: {},
-  isPlay: false
+  isPlay: false,
+  playList: [],
+  recomendList: []
 }
 
 const beBase: Module<ISBase, unknown> = {

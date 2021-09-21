@@ -1,6 +1,6 @@
 <template>
   <div class="playlist-item cursor" :class="isCarouselChild ? null : 'playlist-item--flex'">
-    <div class="thumbnail">
+    <div class="thumbnail" @click="handlePlay(item)">
       <img :src="item.thumbnailM || item.thumbnailHasText" :alt="item.title" class="img-fluid" />
       <div v-if="isShowDes" class="opacity"></div>
       <div v-if="isShowDes" class="overlay">
@@ -29,6 +29,12 @@
 
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator'
+  import getRepository from '@/services'
+  import AlbumRepository from '@/services/repositories/album'
+  import { namespace } from 'vuex-class'
+  const beBase = namespace('beBase')
+
+  const apiAlbum: AlbumRepository = getRepository('album')
 
   @Component
   export default class PlayListItem extends Vue {
@@ -36,6 +42,20 @@
     @Prop({ required: false, type: Boolean, default: true }) isCarouselChild!: boolean
     @Prop({ required: false, type: Boolean, default: true }) isShowDes!: boolean
     @Prop({ required: false, type: String, default: '' }) type!: string
+
+    @beBase.Action('setcurrentTrack') setcurrentTrack!: (song: Record<string, any>) => void
+    @beBase.Action('getRecomendSong') getRecomendSong!: (id: string) => void
+    @beBase.Action('setPlaySong') setPlaySong!: (status: boolean) => void
+
+    handlePlay(item: Record<string, any>): void {
+      if (this.isShowDes) {
+        apiAlbum.getListSongAlbum({ id: item.encodeId }).then(res => {
+          this.setcurrentTrack(res.items[0])
+          this.setPlaySong(true)
+          this.getRecomendSong(res.items[0].encodeId)
+        })
+      }
+    }
   }
 </script>
 

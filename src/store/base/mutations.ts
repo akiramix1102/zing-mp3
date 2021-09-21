@@ -16,6 +16,9 @@ const mutations: MutationTree<ISBase> = {
   },
   SET_PLAY_SONG: (state, status) => {
     state.isPlay = status
+  },
+  SET_RECOMEND_SONG: (state, data) => {
+    state.recomendList = data.items
   }
 }
 export default mutations

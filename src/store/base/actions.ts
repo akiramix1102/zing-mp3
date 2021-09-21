@@ -1,5 +1,8 @@
 import { ActionTree } from 'vuex'
 import { ISBase } from '.'
+import getRepository from '@/services'
+import RecomendRepository from '@/services/repositories/recomended'
+const apiRecomend: RecomendRepository = getRepository('recomended')
 
 const actions: ActionTree<ISBase, unknown> = {
   // setOpenPopup({ commit }, data: { popupName: string; isOpen: string }) {
@@ -10,6 +13,15 @@ const actions: ActionTree<ISBase, unknown> = {
   },
   setPlaySong({ commit }, status) {
     commit('SET_PLAY_SONG', status)
+  },
+  async getRecomendSong({ commit }, id) {
+    try {
+      const params = { id }
+      const result = await apiRecomend.getRecomendSong(params)
+      commit('SET_RECOMEND_SONG', result)
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 

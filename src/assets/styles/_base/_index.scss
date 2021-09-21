@@ -78,6 +78,10 @@ ul {
   }
 }
 
+.break-word-webkit {
+  @include break-word-webkit;
+}
+
 .align-center {
   align-items: center;
 }
@@ -101,12 +105,12 @@ ul {
       width: 5px;
     }
     &::-webkit-scrollbar-thumb {
-      background: #9b9b9b;
+      background: #444045;
     }
   }
 
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 0;
     // min-height: 50px;
     -webkit-transition: width 0.3s;
     transition: width 0.3s;
@@ -120,13 +124,8 @@ ul {
   /* Handle */
   &::-webkit-scrollbar-thumb {
     // background: #747474;
-    background: transparent;
+    background: #444045;
     border-radius: 5px;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #9b9b9b;
   }
 }
 

@@ -30,11 +30,11 @@
   export default class ListNewSong extends Vue {
     @Prop({ required: true, type: Array, default: [] }) listItem!: Array<Record<string, any>>
     @beBase.Action('setcurrentTrack') setcurrentTrack!: (song: Record<string, any>) => void
-    @beBase.Action('setPlaySong') setPlaySong!: (status: boolean) => void
+    @beBase.Action('getRecomendSong') getRecomendSong!: (id: string) => void
+
     handlePlay(item: Record<string, any>): void {
-      console.log(item)
       this.setcurrentTrack(item)
-      this.setPlaySong(true)
+      this.getRecomendSong(item.encodeId)
     }
   }
 </script>
